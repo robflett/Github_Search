@@ -5,10 +5,22 @@ class User extends Component {
   render() {
     const { user } = this.props
     return (
-      <div>
-        <h4>User Details</h4>
-        <h4>{user.name}</h4>
-        <h4>{user.location}</h4>
+      <div className="card">
+        <div>
+            <div >
+              <img className="avatar" src={user.avatar} />
+            </div>
+        </div>
+        <div className="details">
+          <h3 className="title">{user.name}</h3>
+          <h3>
+            <a href={user.url} target="_blank">{user.login}</a>
+          </h3>
+          <em>{user.location}</em>
+          <div>
+            <a href={"mailto:" + user.email} target="_blank">{user.email}</a>
+          </div>
+        </div>
       </div>
     )
   }
