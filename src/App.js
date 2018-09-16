@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import User from './User';
+import MostForked from './MostForked';
 import './App.css';
 
 class App extends Component {
@@ -23,14 +24,35 @@ getUser = () =>  {
 })
 }
 
+// mostForked NOT RETURNING CORRECTLY - something to do with the collection being an array?
+
+getMostForked = () => {
+    fetch(`https://api.github.com/search/repositories?q=forks%3A%3E0&sort=forks&per_page=100`).then(response => response.json()).then(data => {this.setState({
+      mostForked: {
+        name: data.name,
+        ownerName: data.full_name,
+        htmlUrl: data.html_url
+      }
+    })
+  })
+}
+
   render() {
     const { user } = this.state; 
+    const { mostForked } = this.state;
     // below User tag brings in content from user.js
+
+    //  below MostForked tag brings in most forked repositories
     return (
       <div className="App">
         <input type="text" placeholder="Enter a username" ref="name"/>
         <button onClick={this.getUser}>Get User Details</button>
         <User user={user}/>
+        
+        <div>
+          <button onClick={this.getMostForked}>Get 'Most Forked' repositories</button>
+          <MostForked mostForked={mostForked}/>
+        </div>
       </div>
     );
   }

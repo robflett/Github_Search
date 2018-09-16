@@ -9,7 +9,6 @@ class User extends Component {
         <h4>User Details</h4>
         <h4>{user.name}</h4>
         <h4>{user.location}</h4>
-        <h4>CAAAAAAAT</h4>
       </div>
     )
   }
