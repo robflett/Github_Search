@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import User from './User';
+import Repos from './Repos';
 import './App.css';
 
 class App extends Component {
@@ -27,9 +28,22 @@ getUser = () =>  {
 })
 }
 
+getRepos = () => {
+    const repos  = this.refs.topic.value;
+    fetch(`https://api.github.com/search/repositories?q=topic:${repos}`)
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+              reposlist: data,
+              showresult:true
+            })
+        })
+}
+
 
   render() {
     const { user } = this.state; 
+    const { repos } = this.state;
     // below User tag brings in content from user.js
     return (
       <div className="container">
@@ -37,7 +51,12 @@ getUser = () =>  {
           <input type="text" placeholder="Enter a username" ref="name"/>
           <button onClick={this.getUser}>Get User Details</button>
         </div>
+        <div className="search">
+          <input ref="topic" placeholder="Search for a topic..."/>
+          <button onClick={this.getRepos}>Get Topic Details</button>
+        </div>
         <User user={user}/>
+        <Repos repos={repos}/>
       </div>
     );
   }
