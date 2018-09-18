@@ -6,7 +6,8 @@ import './App.css';
 class App extends Component {
   // define State
 state = {
-  user: {}
+  user: {},
+  repos: Array(30).fill(null)
 }
 
 // getUser is an ES6 function that binds 'this' without the need to bind within the constructor

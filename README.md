@@ -10,6 +10,7 @@ Build a website allowing the user to search Github repositories, using the Githu
 # Tools:
 - React (via create-react-app bootstrap tool)
 - Node.js
+- Jest (within create-react-app)
 
 # Development
 I used the create-react-app bootstrap to generate the skeleton of the website. Create-react-app automates the installation of Webpack, Babel (for transpiling) and testing tools. This speeds up development and avoids seperate set-up (which I have done in other  React projects such as the BoozeTracker app). 
@@ -31,6 +32,11 @@ npm install
 Once complete type to start the server: 
 ```
 npm start
+```
+
+To run test(s): 
+```
+npm test
 ```
 
 You should be taken directly to the app in your browser but, if not, go to this address to see the GithubSearch app: 
