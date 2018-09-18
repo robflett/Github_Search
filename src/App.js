@@ -29,12 +29,12 @@ getUser = () =>  {
 }
 
 getRepos = () => {
-    const repos  = this.refs.topic.value;
-    fetch(`https://api.github.com/search/repositories?q=topic:${repos}`)
+    const topic  = this.refs.topic.value;
+    fetch(`https://api.github.com/search/repositories?q=topic:${topic}`)
         .then(response => response.json())
         .then(data => {
             this.setState({
-              reposlist: data,
+              repos: data,
               showresult:true
             })
         })
